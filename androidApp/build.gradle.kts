@@ -13,6 +13,7 @@ plugins {
 }
 
 val APP_ID = rootProject.extra["APP_ID"] as String
+val APPLICATION_ID = rootProject.extra["APPLICATION_ID"] as String
 val VER_CODE = rootProject.extra["VER_CODE"] as Int
 val VER_NAME = rootProject.extra["VER_NAME"] as String
 val APP_NAME = rootProject.extra["APP_NAME"] as String
@@ -32,7 +33,9 @@ android {
     }
 
     defaultConfig {
-        applicationId = APP_ID
+        applicationId = APPLICATION_ID
+        resValue("string", "app_name", APP_NAME)
+        resValue("string", "pano_application_id", APPLICATION_ID)
         namespace = APP_ID + ".androidApp"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
@@ -43,7 +46,7 @@ android {
 
     buildFeatures {
         aidl = false
-        resValues = false
+        resValues = true
         shaders = false
     }
 

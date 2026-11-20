@@ -37,8 +37,10 @@ extra.apply {
     val verCode = versionFile.readText().trim().toInt()
     set("VER_CODE", verCode)
     set("VER_NAME", "${verCode / 100}.${verCode % 100}")
+    // Keep the Kotlin/resource namespace stable while allowing separately installed test builds.
     set("APP_ID", "com.arn.scrobble")
-    set("APP_NAME", "Pano Scrobbler")
+    set("APPLICATION_ID", providers.gradleProperty("pano.applicationId").getOrElse("com.arn.scrobble"))
+    set("APP_NAME", providers.gradleProperty("pano.appName").getOrElse("Pano Scrobbler"))
     set("APP_NAME_NO_SPACES", "pano-scrobbler")
     set("RESOURCES_DIR_NAME", resourcesDirName)
     set("IS_WINDOWS", os.isWindows)

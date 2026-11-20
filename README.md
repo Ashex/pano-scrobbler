@@ -100,6 +100,22 @@ you **automatic updates**.
 9E:68:AB:6B:D6:11:CE:79:DD:5D:53:E3:5A:15:CF:93:CF:73:9A:4E:94:C4:9A:B1:BF:10:DD:12:65:F0:2E:6C
 ```
 
+## teal.fm
+
+Choose **teal.fm** when adding an account, then enter your full AT Protocol handle
+(for example, `alice.bsky.social`) or DID and an **app password** from your account
+provider. For Bluesky accounts, create one in
+[Settings → Privacy and Security → App passwords](https://bsky.app/settings/app-passwords).
+Use an app password, not your main account password.
+
+Pano discovers your PDS and writes public `fm.teal.feed.play` listens and
+`fm.teal.actor.status` now-playing records directly to it. It saves and refreshes
+the returned session tokens; it does not save your app password. If the session
+expires or is revoked, reconnect from Accounts. Failed listens remain queued.
+
+This integration supports recent listens in `fm.teal.feed.play`. Charts, following,
+loves, and editing/deleting listens are not currently supported for teal.fm.
+
 ## Translate
 
 [![Translate on Crowdin](img/crowdin.svg)](https://crowdin.com/project/pscrobbler)
@@ -111,7 +127,7 @@ you **automatic updates**.
 ### For all platforms (Windows, Linux, Android, Android TV):
 
 - No ads ever
-- Scrobbles to Lastfm, Librefm, ListenBrainz, Pleroma and other compatible services
+- Scrobbles to Lastfm, Librefm, ListenBrainz, teal.fm, Pleroma and other compatible services
 - View song, album, artist, album artist, and tag details
 - View scrobbles from a specific time, such as last year or last month
 - Extract or fix metadata such as "Remastered" with regex pattern edits

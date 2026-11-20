@@ -27,6 +27,17 @@ releaseGithub.storePassword=
 
 - **Info**: the FOSS build includes no non-free dependencies.
 
+To install a test build alongside the official app, give it a separate application ID and label:
+
+```sh
+./gradlew androidApp:assembleReleaseGithub \
+  -Ppano.applicationId=com.arn.scrobble.tealfm \
+  '-Ppano.appName=Pano Scrobbler (teal.fm test)'
+```
+
+Use a local signing key via the `releaseGithub` properties above. The test app has
+its own accounts, settings and notification-access permission.
+
 ### For Android (Play Store):
 
 - Create a Firebase project for Crashlytics and add the google-services.json to composeApp/

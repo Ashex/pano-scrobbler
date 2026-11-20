@@ -34,6 +34,7 @@ val isReleaseBuild = gradle.startParameter.taskNames.any {
 }
 
 val APP_ID = rootProject.extra["APP_ID"] as String
+val APPLICATION_ID = rootProject.extra["APPLICATION_ID"] as String
 val VER_CODE = rootProject.extra["VER_CODE"] as Int
 val VER_NAME = rootProject.extra["VER_NAME"] as String
 val APP_NAME = rootProject.extra["APP_NAME"] as String
@@ -132,6 +133,7 @@ kotlin {
 
         commonTest.dependencies {
             implementation(kotlin("test"))
+            implementation("io.ktor:ktor-client-mock:${libs.versions.ktor.get()}")
         }
 
         jvmMain.dependencies {
@@ -181,7 +183,7 @@ buildkonfig {
     // default config is required
     defaultConfigs {
         buildConfigField(STRING, "APP_NAME", APP_NAME, const = true)
-        buildConfigField(STRING, "APP_ID", APP_ID, const = true)
+        buildConfigField(STRING, "APP_ID", APPLICATION_ID, const = true)
         buildConfigField(INT, "VER_CODE", VER_CODE.toString(), const = true)
         buildConfigField(STRING, "VER_NAME", VER_NAME, const = true)
         buildConfigField(BOOLEAN, "DEBUG", (!isReleaseBuild).toString(), const = true)
@@ -198,19 +200,19 @@ buildkonfig {
         buildConfigField(
             STRING,
             "LASTFM_KEY",
-            xor(lastfmKey, APP_ID),
+            xor(lastfmKey, APPLICATION_ID),
             const = true
         )
         buildConfigField(
             STRING,
             "LASTFM_SECRET",
-            xor(lastfmSecret, APP_ID),
+            xor(lastfmSecret, APPLICATION_ID),
             const = true
         )
         buildConfigField(
             STRING,
             "SPOTIFY_REFRESH_TOKEN",
-            xor(spotifyRefreshToken, APP_ID),
+            xor(spotifyRefreshToken, APPLICATION_ID),
             const = true
         )
 

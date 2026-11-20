@@ -449,4 +449,10 @@ Your purchases are managed by Google Play. They are linked with a Google Play ac
     <string name="billing_regex_extract">Write custom metadata extraction rules using regex</string>
     <string name="billing_max_devices_reached" formatted="true">This code has already been used on maximum (%1$d) devices.</string>
 
+    <string name="tealfm">teal.fm</string>
+    <string name="tealfm_handle">Account handle</string>
+    <string name="tealfm_handle_hint">For example, ilovetealfm.bsky.social</string>
+    <string name="tealfm_app_password">App password</string>
+    <string name="tealfm_login_help">Create an app password for your account, you should not use your account password. Your listens will be public</string>
+    <string name="tealfm_create_app_password">Create a Bluesky app password</string>
 </resources>
